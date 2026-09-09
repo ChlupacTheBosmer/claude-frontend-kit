@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["chrome-devtools-mcp@latest"],
+      "title": "Chrome DevTools",
+      "description": "Drives a real Chrome instance — navigate, screenshot, resize, inspect the DOM and console, run Lighthouse audits. Required by the design-review agent."
+    }
+  }
+}

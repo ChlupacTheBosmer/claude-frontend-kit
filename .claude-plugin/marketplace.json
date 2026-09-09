@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-frontend-kit",
+  "description": "Frontend design and UX tooling for Claude Code — a design pipeline that sequences concept derivation, build rules, and verification gates, with a live-browser design reviewer.",
+  "owner": {
+    "name": "Petr Chlup",
+    "email": "chlupp@natur.cuni.cz"
+  },
+  "plugins": [
+    {
+      "name": "frontend-design",
+      "displayName": "Frontend Design",
+      "source": "./frontend-design",
+      "description": "Design and redesign frontend surfaces with a directed pipeline: concept derivation, a committed direction contract, category-canon builds, and mechanical verification (axe accessibility, mobile overflow, screenshot sweeps, anti-slop detection). Includes a live-browser design-review subagent and wiring for external component registries.",
+      "author": {
+        "name": "Petr Chlup"
+      }
+    }
+  ]
+}
