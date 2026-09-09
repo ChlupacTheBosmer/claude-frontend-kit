@@ -1,6 +1,6 @@
 ---
 name: ui-registries
-description: Connect and use Peter's preferred external UI component registries and frontend tooling in any React + Tailwind project - Motion Primitives (animated components), Watermelon UI (components, blocks, dashboards, templates), Haikei (SVG backgrounds), and Agentation (visual point-and-click feedback from browser to agent). Use when the user says "use the UI registries", "wire up the component registries", "/ui-registries", "agentation", "watch mode", asks to add animated components, prebuilt blocks, or generated SVG backgrounds, or starts frontend work outside the frontend-design-pipeline skill. Not a design-direction skill: it supplies materials, not taste.
+description: 'Connect and use Peter''s preferred external UI component registries and frontend tooling in any React + Tailwind project - Motion Primitives (animated components), Watermelon UI (components, blocks, dashboards, templates), Haikei (SVG backgrounds), and Agentation (visual point-and-click feedback from browser to agent). Use when the user says "use the UI registries", "wire up the component registries", "/ui-registries", "agentation", "watch mode", asks to add animated components, prebuilt blocks, or generated SVG backgrounds, or starts frontend work outside the frontend-design-pipeline skill. Not a design-direction skill: it supplies materials, not taste.'
 ---
 
 # UI registries
