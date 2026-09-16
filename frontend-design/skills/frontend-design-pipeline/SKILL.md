@@ -1,7 +1,7 @@
 ---
 name: frontend-design-pipeline
 description: Use for ANY frontend design or redesign work - landing pages, marketing sites, portfolios, editorial, dashboards, app shells, product UI, forms, settings, onboarding, empty states, components. Also for design critique, UX review, audits, polish, typography, layout, spacing, color, motion, accessibility, responsive behavior, theming, design systems, and making a design bolder, quieter, or less generic. This skill is the entry point and supersedes design-taste-frontend and impeccable - it sequences both and resolves their conflicts. Load this INSTEAD of either one; it tells you when to read them. Not for backend-only or non-UI tasks.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Frontend design pipeline
@@ -27,6 +27,68 @@ Never let the rulebook pick the direction.
 **Do not load either skill's SKILL.md wholesale up front.** This file names the specific file and
 section to read at each step. Reading both in full costs ~2 400 lines and produces exactly the
 conflict this router exists to prevent.
+
+---
+
+## Operating notes (formerly the plugin CLAUDE.md; a plugin-root CLAUDE.md is never loaded)
+
+### Skill routing
+
+This skill is the entry point for all frontend design work. It owns sequence, scope and
+conflict resolution and tells you when to read the others.
+
+Do **not** load `impeccable` or `design-taste-frontend` alongside `impeccable-taste`. The latter
+is a deliberate merge of both parents and restates their rules with conflicts already arbitrated.
+Loading them together produces contradictory direction.
+
+| Skill | Role |
+|---|---|
+| `frontend-design-pipeline` | Entry point. Concept-led path. Read this first. |
+| `impeccable` | Concept-led path: direction contract, detector, out-of-thread review. |
+| `impeccable-taste` | Category-canon path: client/service-business sites and unattended builds where stochastic direction-picking is unreviewable. |
+| `design-taste-frontend` | Anti-slop rules for landing pages and portfolios. |
+| `ui-registries` | Supplies materials (Motion Primitives, Watermelon UI, Haikei, Agentation), not taste. Not a design-direction skill. |
+
+### Before the verification gates run
+
+The gate scripts need Node dependencies and a Chromium binary that are not committed. Once per
+machine (and again after a plugin update, which replaces the install directory):
+
+```bash
+"${CLAUDE_PLUGIN_ROOT}/scripts/bootstrap.sh"
+```
+
+A `SessionStart` hook prints a one-line notice when the dependencies are missing. If a gate fails
+with `Cannot find module 'playwright'` or `browserType.launch: Executable doesn't exist`, bootstrap
+has not been run. Run it; do not work around it.
+
+### Verification gates
+
+| Script | Checks |
+|---|---|
+| `skills/frontend-design-pipeline/scripts/axe-run.mjs <url\|file>` | WCAG violations via axe-core. Exit 2 = violations, printed as JSON lines. |
+| `skills/frontend-design-pipeline/scripts/viewport-shots.mjs <url\|file>` | Screenshots at 375/768/1440 plus overflow and console errors. Writes `.shots/`. |
+| `skills/impeccable/scripts/detect.mjs --json <files>` | Anti-slop/craft-floor detection. Local only, no network. |
+| `skills/impeccable/scripts/doctor.mjs --json` | Project self-diagnostic. |
+| `skills/impeccable-taste/scripts/check-overflow.mjs <file>` | Horizontal overflow at 390px and 360px. |
+| `skills/impeccable-taste/scripts/check-images.mjs <file>` | Missing or placeholder images. No placeholders, ever. |
+| `skills/impeccable-taste/scripts/check-dashes.mjs <file>` | Visible em/en dashes in shipped copy. |
+
+### Design review
+
+The `design-review` agent drives a real browser through the bundled `chrome-devtools` MCP. It
+needs a running dev server or a `file://` artifact. It reports problems and their impact, never
+prescriptions, triaged as Blocker / High-Priority / Medium-Priority / Nit.
+
+### Paths
+
+Everything inside this plugin is addressed as `${CLAUDE_PLUGIN_ROOT}/...`, which the harness
+resolves to the install directory. Never hardcode an absolute path into these files.
+
+### Copy conventions
+
+Zero em-dashes in shipped copy. Czech client-facing copy uses correct vykání, „české uvozovky",
+and non-breaking spaces after one-letter prepositions.
 
 ---
 

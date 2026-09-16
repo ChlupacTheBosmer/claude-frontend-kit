@@ -1,6 +1,6 @@
 {
   "name": "frontend-design",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Frontend design pipeline: concept-led or category-canon builds, anti-slop rules, Tailwind v4 and shadcn references, motion guidance, and verification gates (axe, overflow, screenshots). Ships a live-browser design-review agent and the chrome-devtools MCP it needs.",
   "author": {
     "name": "Petr Chlup",

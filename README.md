@@ -21,6 +21,11 @@ committed; `bootstrap.sh` restores both and verifies every gate. It is idempoten
 
 Requires Node 18+ and Google Chrome.
 
+Operating notes (skill routing, the gates table, path and copy conventions) live inside
+`frontend-design/skills/frontend-design-pipeline/SKILL.md`, because Claude Code does not load a
+CLAUDE.md placed at a plugin root. A `SessionStart` hook prints a one-line reminder when the gate
+dependencies are missing, which also happens after a plugin update replaces the install directory.
+
 ## What you get
 
 | Component | What it does |

@@ -1,0 +1,15 @@
+{
+  "description": "Warn once per session when the verification-gate dependencies have not been restored.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "D=\"${CLAUDE_PLUGIN_ROOT}/skills/frontend-design-pipeline/scripts\"; if [ ! -d \"$D/node_modules/playwright\" ] || [ ! -d \"$D/node_modules/axe-core\" ]; then echo \"frontend-design plugin: verification gates are not installed. Before running axe-run.mjs or viewport-shots.mjs, run: \\\"${CLAUDE_PLUGIN_ROOT}/scripts/bootstrap.sh\\\"\"; fi; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}
